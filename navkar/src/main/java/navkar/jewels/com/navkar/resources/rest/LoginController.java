@@ -20,36 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 @CrossOrigin
 public class LoginController {
-	private String clientId;
-	private String secretId;
-	private FacebookConnectionFactory factory ;
+
 	
-	public LoginController(@Value("${spring.social.facebook.clientid}") String clientId,@Value("${spring.social.facebook.secretid}") String secretId) {
-		this.clientId=clientId;
-		this.secretId=secretId;
-		this.factory= new FacebookConnectionFactory(clientId,
-				secretId);
+	public String LoginControllers() {
+		return "Hello World";
 	}
 	
-	@GetMapping(value = "/facebook")
-	public String producer() {
-		OAuth2Operations operations = factory.getOAuthOperations();
-		OAuth2Parameters params = new OAuth2Parameters();
-		params.setRedirectUri("http://localhost:8088/api/");
-		params.setScope("email,public_profile");
-		String url = operations.buildAuthenticateUrl(params);
-		return "redirect:" + url;
-	}
-	
-	@GetMapping(value = "/")
-	public String rediredt(@RequestParam("code") String authorizationCode) {
-		OAuth2Operations operations=factory.getOAuthOperations();
-		AccessGrant accessToken=operations.exchangeForAccess(authorizationCode,"http://localhost:8088/api/", null);
-		Connection<Facebook> connection=factory.createConnection(accessToken);
-		Facebook facebook=connection.getApi();
-		String[] fields = {"id","email","first_name","last_name"};
-		User userProfile=facebook.fetchObject("me",User.class, fields);
-		
-		return "redirected: Welcome "+userProfile.getFirstName() + "  "+ userProfile.getLastName() +" & your mail id is : "+userProfile.getEmail();
-	}
 }
