@@ -12,9 +12,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class PatientDetailsRequestDto {
-private String patientName;
-private String patientAddrs;
-private String mobileNumber;
-private String numberOfHospitalized;
-private Double billPerDay;
+	private String patientName;
+	private String patientAddrs;
+	private String mobileNumber;
+	private String numberOfHospitalized;
+	private Double billPerDay;
 }
