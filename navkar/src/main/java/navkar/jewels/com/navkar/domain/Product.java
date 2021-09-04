@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name="product",indexes = {@Index(columnList = "product_name")})
+//@Entity
+//@Table(name="product",indexes = {@Index(columnList = "product_name")})
 @Data
 @Getter
 @Setter
