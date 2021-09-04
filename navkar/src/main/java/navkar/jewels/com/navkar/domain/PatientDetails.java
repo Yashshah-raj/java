@@ -23,8 +23,8 @@ import lombok.Setter;
 import lombok.ToString;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 
-@Entity
-@Table(name="patient_details")
+//@Entity
+//@Table(name="patient_details")
 @Data
 @Getter
 @Setter
